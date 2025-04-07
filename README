@@ -17,7 +17,7 @@ This program is a Python app that captures your Chrome coding challenge, sends i
 3. Install dependencies
 pip install -r requirements.txt
 
-4. Edit and add the `.env` file
+4. Edit and add the `.env` file. You will need an OpenAI key and a language that you want the question solved in (default is python)
 
 5. Run the program by using python ScrewCodingAssessments.py
 
