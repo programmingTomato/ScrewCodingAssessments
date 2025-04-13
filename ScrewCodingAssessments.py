@@ -2,20 +2,30 @@ import customtkinter as ctk
 from pynput import keyboard
 import threading
 import openai
-from dotenv import load_dotenv
 import pygetwindow as gw
 from PIL import ImageGrab
 import os
 import base64
 from io import BytesIO
 import ctypes
-from ctypes import wintypes
 import re
+from pathlib import Path
+from dotenv import load_dotenv
+import sys
 
 
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-LANGUAGE = os.getenv("LANGUAGE", "python")
+if getattr(sys, 'frozen', False):
+    base_path = Path(sys.executable).parent
+else:
+    base_path = Path(__file__).parent
+
+
+env_path = base_path / '.env'
+load_dotenv(dotenv_path=env_path)
+
+
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+LANGUAGE = os.environ.get("LANGUAGE", "python")
 
 openai.api_key = OPENAI_API_KEY
 
@@ -147,7 +157,6 @@ def show_message():
     header.bind("<B1-Motion>", do_move)
     header.bind("<ButtonRelease-1>", stop_move)
 
-    # Escape key or right click to close
     window.bind("<Escape>", lambda e: (window.destroy(), root.destroy()))
     window.bind("<Button-3>", lambda e: (window.destroy(), root.destroy()))
 
@@ -173,7 +182,7 @@ listener.start()
 
 print("Screw Coding Assessments is running... Press Win + F12 to solve the problem in your chosen language.")
 
-# Keep script alive
+
 try:
     listener.join()
 except KeyboardInterrupt:
