@@ -10,6 +10,8 @@ This program is a Python app that captures your Chrome coding challenge, sends i
 
 -=Installation=-
 
+IF YOU ARE USING THE RELEASED .EXE, ALL YOU NEED IS A .ENV FILE NEXT TO WHERE THE .EXE IS PLACED. IF DOWNLOADING AND RUNNING THE CODE IN SOMETHING LIKE PYCHARM, CONTINUE!
+
 1. Install python if not already installed
 
 2. Clone the repo:
